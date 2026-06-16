@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integration Testing Dashboard</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.css">
+    
+    <style>
+        body {
+            background-color: #121214;
+            color: #e1e1e6;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #202024;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 1px solid #29292e;
+        }
+        h2 {
+            margin-top: 0;
+            color: #00adb5;
+            border-bottom: 1px solid #29292e;
+            padding-bottom: 10px;
+        }
+        /* Application UI Styling */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            background: #121214;
+            border: 1px solid #29292e;
+            color: white;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #00adb5;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        button:hover {
+            background: #008c95;
+        }
+        #messageSummary {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .success-msg {
+            background-color: #1b4332;
+            color: #b7e4c7;
+            border: 1px solid #2d6a4f;
+        }
+        /* Overriding Mocha for dark theme consistency */
+        #mocha h1 { font-size: 1.2em; color: #fff; }
+        #mocha-stats { background: #29292e !important; border-radius: 6px; color: #fff;}
+        #mocha .test.pass pre { background: #121214 !important; color: #a8ffb2 !important;}
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="card">
+        <h2>Application: Newsletter Signup</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="emailInput">Email Address</label>
+                <input type="text" id="emailInput" placeholder="name@example.com">
+            </div>
+            <button type="submit" id="submitBtn">Subscribe</button>
+        </form>
+        <div id="messageSummary"></div>
+    </div>
+
+    <div class="card">
+        <h2>Integration Test Runner</h2>
+        <div id="mocha"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/10.2.0/mocha.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.7/chai.min.js"></script>
+
+<script>
+    // Initialize the Mocha test suite structure
+    mocha.setup('bdd');
+</script>
+
+<script src="integration-test.js"></script>
+
+<script>
+    // Execute the test suites after everything is fully parsed
+    mocha.run();
+</script>
+
+</body>
+</html>
